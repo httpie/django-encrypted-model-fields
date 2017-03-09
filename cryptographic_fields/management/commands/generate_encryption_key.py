@@ -8,4 +8,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         key = cryptography.fernet.Fernet.generate_key()
-        self.stdout.write(key)
+        # SAS - how to properly do for both Python 2 and Python 3
+        self.stdout.write(key, ending=b'\n')
