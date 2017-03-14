@@ -263,8 +263,9 @@ class TestModelTestCase(TestCase):
 
             # test that loading the instance from the database results in usable data
             # (since it uses the older key that's still configured)
-            # Note we need to only load the enc_char_field because loading date field types results in conversion to python dates,
-            # which will be raise a ValidationError when the field can't be properly decoded
+            # Note we need to only load the enc_char_field because loading date field types results in
+            # conversion to python dates, which will be raise a ValidationError when the field can't be
+            # properly decoded
             inst = models.TestModel.objects.only('enc_char_field').get()
             self.assertNotEqual(inst.enc_char_field, 'This is a test string!')
             self.assertEqual(inst.enc_char_field[:5], 'gAAAA')

@@ -6,7 +6,7 @@ from django.utils.six import PY2, string_types
 from django.utils.functional import cached_property
 from django.core import validators
 from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured
+from django.core.exceptions import ImproperlyConfigured, SuspiciousOperation
 
 import cryptography.fernet
 
@@ -34,8 +34,7 @@ def get_crypter():
             # else turn the single key into a list of one
             keys = [parse_key(configured_keys), ]
     except Exception as e:
-        raise ImproperlyConfigured(
-            'FIELD_ENCRYPTION_KEY defined incorrectly: {}'.format(str(e)))
+        raise ImproperlyConfigured('FIELD_ENCRYPTION_KEY defined incorrectly: {}'.format(str(e)))
 
     if len(keys) == 0:
         raise ImproperlyConfigured('No keys defined in setting FIELD_ENCRYPTION_KEY')
@@ -73,7 +72,7 @@ class EncryptedMixin(object):
             try:
                 value = decrypt_str(value)
             except cryptography.fernet.InvalidToken:
-                pass
+                raise SuspiciousOperation('Could Not Decode value.')
 
         return super(EncryptedMixin, self).to_python(value)
 
@@ -81,8 +80,7 @@ class EncryptedMixin(object):
         return self.to_python(value)
 
     def get_db_prep_save(self, value, connection):
-        value = super(EncryptedMixin, self).get_db_prep_save(
-            value, connection)
+        value = super(EncryptedMixin, self).get_db_prep_save(value, connection)
 
         if value is None:
             return value
@@ -162,8 +160,7 @@ class EncryptedNumberMixin(EncryptedMixin):
         # they're based on values retrieved from `connection`.
         range_validators = []
         internal_type = self.__class__.__name__[9:]
-        min_value, max_value = django.db.connection.ops.integer_field_range(
-            internal_type)
+        min_value, max_value = django.db.connection.ops.integer_field_range(internal_type)
         if min_value is not None:
             range_validators.append(validators.MinValueValidator(min_value))
         if max_value is not None:
