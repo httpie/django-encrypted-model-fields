@@ -6,7 +6,7 @@ from django.utils.six import PY2, string_types
 from django.utils.functional import cached_property
 from django.core import validators
 from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured, SuspiciousOperation
+from django.core.exceptions import ImproperlyConfigured
 
 import cryptography.fernet
 
@@ -72,7 +72,7 @@ class EncryptedMixin(object):
             try:
                 value = decrypt_str(value)
             except cryptography.fernet.InvalidToken:
-                raise SuspiciousOperation('Could Not Decode value.')
+                pass
 
         return super(EncryptedMixin, self).to_python(value)
 
