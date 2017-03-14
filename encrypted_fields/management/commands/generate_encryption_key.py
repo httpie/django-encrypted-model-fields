@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from django.utils.six import PY2
 
 import cryptography.fernet
 
@@ -8,5 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         key = cryptography.fernet.Fernet.generate_key()
-        # SAS - how to properly do for both Python 2 and Python 3
-        self.stdout.write(key, ending=b'\n')
+        if PY2:
+            self.stdout.write(key)
+        else:
+            self.stdout.write(key, ending=b'\n')

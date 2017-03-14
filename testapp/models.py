@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 import django.db.models
 
-from cryptographic_fields import fields
+from encrypted_fields import fields
 
 
 class TestModel(django.db.models.Model):

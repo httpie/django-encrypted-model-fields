@@ -11,7 +11,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.admin',
     'django_coverage',
-    'cryptographic_fields',
+    'encrypted_fields',
     'testapp',
 )
 
@@ -23,15 +23,6 @@ DATABASES = {
         'NAME': 'testapp.sqlite3',
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'USERNAME': 'dana',
-#         'HOST': '127.0.0.1',
-#         'PORT': 5432,
-#         'NAME': 'test',
-#     }
-# }
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',

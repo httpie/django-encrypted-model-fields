@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-import sys
-
 import django.db
 import django.db.models
 from django.utils.six import PY2, string_types
@@ -13,6 +11,15 @@ from django.core.exceptions import ImproperlyConfigured
 import cryptography.fernet
 
 
+def parse_key(key):
+    """
+    If the key is a string we need to ensure that it can be decoded
+    :param key:
+    :return:
+    """
+    return cryptography.fernet.Fernet(key)
+
+
 def get_crypter():
     configured_keys = getattr(settings, 'FIELD_ENCRYPTION_KEY')
 
@@ -22,10 +29,10 @@ def get_crypter():
     try:
         # Allow the use of key rotation
         if isinstance(configured_keys, (tuple, list)):
-            keys = [cryptography.fernet.Fernet(str(k)) for k in configured_keys]
+            keys = [parse_key(k) for k in configured_keys]
         else:
             # else turn the single key into a list of one
-            keys = [cryptography.fernet.Fernet(str(configured_keys)), ]
+            keys = [parse_key(configured_keys), ]
     except Exception as e:
         raise ImproperlyConfigured(
             'FIELD_ENCRYPTION_KEY defined incorrectly: {}'.format(str(e)))
@@ -97,7 +104,6 @@ class EncryptedMixin(object):
 
 
 class EncryptedCharField(EncryptedMixin, django.db.models.CharField):
-
     pass
 
 

@@ -1,3 +1,0 @@
-machine:
-    environment:
-        DJANGO_SETTINGS_MODULE: "settings_circleci"

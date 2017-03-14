@@ -11,7 +11,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.admin',
     'django_coverage',
-    'cryptographic_fields',
+    'encrypted_fields',
     'testapp',
 )
 
@@ -23,7 +23,7 @@ DATABASES = {
         'USERNAME': 'ubuntu',
         'HOST': '127.0.0.1',
         'PORT': 5432,
-        'NAME': 'circle_test',
+        'NAME': 'travis_test',
     }
 }
 
