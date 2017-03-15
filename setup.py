@@ -6,7 +6,7 @@ import os
 from setuptools import setup, find_packages
 
 
-with open('encrypted_fields/__init__.py', 'r') as init_file:
+with open('encrypted_model_fields/__init__.py', 'r') as init_file:
     version = re.search(
         '^__version__ = [\'"]([^\'"]+)[\'"]',
         init_file.read(),
@@ -17,7 +17,7 @@ with open('encrypted_fields/__init__.py', 'r') as init_file:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-encrypted-fields',
+    name='django-encrypted-model-fields',
     version=version,
     packages=find_packages(),
     license='MIT',
@@ -27,8 +27,8 @@ setup(
         'cryptography.io native python encryption library.'
     ),
     long_description=open('README.rst').read(),
-    url='http://github.com/lanshark/django-encrypted-fields/',
-    download_url='https://github.com/lanshark/django-encrypted-fields/archive/' + version + '.tar.gz',
+    url='http://github.com/lanshark/django-encrypted-model-fields/',
+    download_url='https://github.com/lanshark/django-encrypted-model-fields/archive/' + version + '.tar.gz',
     author='Scott Sharkey',
     author_email='ssharkey@lanshark.com',
     maintainer="Scott Sharkey",

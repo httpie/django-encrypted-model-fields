@@ -11,7 +11,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.admin',
     'django_coverage',
-    'encrypted_fields',
+    'encrypted_model_fields',
     'testapp',
 )
 

@@ -9,7 +9,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 import cryptography.fernet
-import encrypted_fields.fields
+import encrypted_model_fields.fields
 
 from . import models
 
@@ -185,7 +185,7 @@ class TestModelTestCase(TestCase):
 
         with self.settings(FIELD_ENCRYPTION_KEY=key1):
             # make sure we update the crypter with the new key
-            encrypted_fields.fields.CRYPTER = encrypted_fields.fields.get_crypter()
+            encrypted_model_fields.fields.CRYPTER = encrypted_model_fields.fields.get_crypter()
 
             test_date_today = datetime.date.today()
             test_date = datetime.date(2011, 1, 1)
@@ -208,7 +208,7 @@ class TestModelTestCase(TestCase):
         # (since it uses the older key that's still configured)
         with self.settings(FIELD_ENCRYPTION_KEY=[key2, key1]):
             # make sure we update the crypter with the new key
-            encrypted_fields.fields.CRYPTER = encrypted_fields.fields.get_crypter()
+            encrypted_model_fields.fields.CRYPTER = encrypted_model_fields.fields.get_crypter()
 
             inst = models.TestModel.objects.get()
             self.assertEqual(inst.enc_char_field, 'This is a test string!')
@@ -234,7 +234,7 @@ class TestModelTestCase(TestCase):
         # test that saving the instance results in key rotation to the correct key
         with self.settings(FIELD_ENCRYPTION_KEY=[key2, ]):
             # make sure we update the crypter with the new key
-            encrypted_fields.fields.CRYPTER = encrypted_fields.fields.get_crypter()
+            encrypted_model_fields.fields.CRYPTER = encrypted_model_fields.fields.get_crypter()
 
             # test that loading the instance from the database results in usable data
             # (since it uses the older key that's still configured)
@@ -259,7 +259,7 @@ class TestModelTestCase(TestCase):
         # test that the instance with rotated key is no longer readable using the old key
         with self.settings(FIELD_ENCRYPTION_KEY=[key1, ]):
             # make sure we update the crypter with the new key
-            encrypted_fields.fields.CRYPTER = encrypted_fields.fields.get_crypter()
+            encrypted_model_fields.fields.CRYPTER = encrypted_model_fields.fields.get_crypter()
 
             # test that loading the instance from the database results in usable data
             # (since it uses the older key that's still configured)
@@ -271,4 +271,4 @@ class TestModelTestCase(TestCase):
             self.assertEqual(inst.enc_char_field[:5], 'gAAAA')
 
         # reset the CRYPTER since we screwed with the default configuration with this test
-        encrypted_fields.fields.CRYPTER = encrypted_fields.fields.get_crypter()
+        encrypted_model_fields.fields.CRYPTER = encrypted_model_fields.fields.get_crypter()
