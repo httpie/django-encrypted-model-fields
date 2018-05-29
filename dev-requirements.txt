@@ -1,0 +1,4 @@
+# for testing...
+django_coverage
+mock
+tox
