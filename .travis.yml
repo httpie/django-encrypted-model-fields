@@ -16,4 +16,5 @@ python:
   - "3.5"
   - "3.6"
 script:
-  python manage.py test
+  tox
+  #python manage.py test
