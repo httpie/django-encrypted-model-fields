@@ -28,7 +28,7 @@ Getting Started
 
     $ pip install django-encrypted-model-fields
 
-Add "encrypted_model_fields" to your INSTALLED_APPS setting like this:
+Add "encrypted_model_fields" to your INSTALLED_APPS setting like this::
 
     INSTALLED_APPS = (
         ...
@@ -78,7 +78,7 @@ Development Environment
 Added Tox for testing with different versions of Django and Python.  To get started:
     pip install -r dev-requirements.txt
 
-using `pyenv` add the requisite python interpreters:
+using ``pyenv`` add the requisite python interpreters:
     pyenv install 3.6.5
     pyenv install 3.5.5
     pyenv install 2.7.15
@@ -86,5 +86,5 @@ using `pyenv` add the requisite python interpreters:
 Add the requisite versions to the local version:
     pyenv local 2.7.15 3.5.5 3.6.5
 
-Run `tox`
+Run ``tox``
     tox
