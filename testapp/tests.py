@@ -107,7 +107,7 @@ class TestModelTestCase(TestCase):
         inst.enc_char_field = 'This is a test string!'
         inst.enc_text_field = 'This is a test string2!'
         inst.enc_date_field = datetime.date(2011, 1, 1)
-        inst.enc_datetime_field = datetime.datetime(2012, 2, 1, 1, tzinfo=timezone.UTC())
+        inst.enc_datetime_field = datetime.datetime(2012, 2, 1, 1, tzinfo=timezone.utc)
         inst.enc_boolean_field = True
         inst.enc_null_boolean_field = True
         inst.enc_integer_field = 123456789

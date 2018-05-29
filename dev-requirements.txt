@@ -1,0 +1,6 @@
+-r requirements.txt
+
+# for testing...
+django_coverage
+mock
+tox
