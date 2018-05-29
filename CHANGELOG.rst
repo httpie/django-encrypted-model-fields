@@ -1,5 +1,7 @@
 django-encrypted-model-field Changelog
 ---------------------------------------
+- 0.5.5 - Fixed README
+
 - 0.5.4 - drop python 3.4 support
   * add django 2.0 support
   * expand testing to cover python 2.7, 3.5 and 3.6 for django 1.9, 1.10, 1.11 and 2.0
