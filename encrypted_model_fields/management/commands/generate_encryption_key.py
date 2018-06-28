@@ -12,4 +12,4 @@ class Command(BaseCommand):
         if PY2:
             self.stdout.write(key)
         else:
-            self.stdout.write(key, ending=b'\n')
+            self.stdout.write(key.decode('utf-8'), ending='\n')
