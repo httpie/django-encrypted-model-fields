@@ -10,6 +10,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         key = cryptography.fernet.Fernet.generate_key()
         if PY2:
-            self.stdout.write(key)
+            self.stdout.write(key.decode())
         else:
-            self.stdout.write(key, ending=b'\n')
+            self.stdout.write(key.decode(), ending='\n')
