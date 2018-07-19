@@ -21,7 +21,7 @@ def parse_key(key):
 
 
 def get_crypter():
-    configured_keys = getattr(settings, 'FIELD_ENCRYPTION_KEY')
+    configured_keys = getattr(settings, 'FIELD_ENCRYPTION_KEY', None)
 
     if configured_keys is None:
         raise ImproperlyConfigured('FIELD_ENCRYPTION_KEY must be defined in settings')
