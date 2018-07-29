@@ -1,5 +1,8 @@
 django-encrypted-model-field Changelog
 ---------------------------------------
+- 0.5.6 - Fixed issue with generating encryption keys (thanks Dave Alan)
+  * dropped support for Django 1.8, 1.9 and 1.10
+
 - 0.5.5 - Fixed README
 
 - 0.5.4 - drop python 3.4 support
