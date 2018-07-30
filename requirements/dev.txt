@@ -1,5 +1,7 @@
 -r requirements.txt
 
+wheel
+
 # for testing...
 django_coverage
 mock
