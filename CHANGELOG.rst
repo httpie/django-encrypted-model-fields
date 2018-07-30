@@ -5,7 +5,7 @@ django-encrypted-model-field Changelog
   * define default value for FIELD_ENCRYPTION_KEY
   * restore support for Django 1.9, 1.10, and 1.11
 
-- 0.5.6 - fix generate_key
+- 0.5.6 - Fixed issue with generating encryption keys (thanks Dave Alan)
   * dropped support for Django 1.8, 1.9 and 1.10
   * fix classifier to include Django 2.0
 
