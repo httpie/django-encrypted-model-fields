@@ -1,4 +1,1 @@
-setuptools
-cryptography==1.8.1
-Django>=1.9.4
-six==1.11.0
+-r requirements/base.txt

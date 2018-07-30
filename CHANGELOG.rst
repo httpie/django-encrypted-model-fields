@@ -1,5 +1,13 @@
 django-encrypted-model-field Changelog
 ---------------------------------------
+- 0.5.7 - rearrange requirements and update dependencies
+  * fix issue with output of generate_encryption_key command
+  * define default value for FIELD_ENCRYPTION_KEY
+
+- 0.5.6 - fix generate_key
+  * drop support for older django
+  * fix classifier to include Django 2.0
+
 - 0.5.5 - Fixed README
 
 - 0.5.4 - drop python 3.4 support
