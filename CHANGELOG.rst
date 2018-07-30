@@ -1,5 +1,7 @@
 django-encrypted-model-field Changelog
 ---------------------------------------
+- 0.5.8 - Move to GITLAB repository
+
 - 0.5.7 - rearrange requirements and update dependencies
   * fix issue with output of generate_encryption_key command
   * define default value for FIELD_ENCRYPTION_KEY
