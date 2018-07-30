@@ -1,5 +1,1 @@
-cryptography==2.2.2
-Django>=1.11
-idna==2.7
-setuptools
-six==1.11.0
+-r requirements/base.txt
