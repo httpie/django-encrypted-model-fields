@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import django.db.models
 
 from encrypted_model_fields import fields
