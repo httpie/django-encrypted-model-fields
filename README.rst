@@ -72,6 +72,16 @@ encryption key to set as ``settings.FIELD_ENCRYPTION_KEY``.
 Running this command will print an encryption key to the terminal, which can
 be configured in your environment or settings file.
 
+NOTE: This command will ONLY work in a CLEAN, NEW django project that does NOT
+import encrypted_model_fields in any of it's apps.  IF you are already importing
+encrypted_model_fields, try running this in a python shell instead:
+
+import os
+import base64
+
+new_key = base64.urlsafe_b64encode(os.urandom(32))
+print(new_key)
+
 Development Environment
 -----------------------
 
