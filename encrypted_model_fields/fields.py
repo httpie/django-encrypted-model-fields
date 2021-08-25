@@ -1,9 +1,10 @@
 import django.db
 import django.db.models
-from django.utils.functional import cached_property
-from django.core import validators
 from django.conf import settings
+from django.core import validators
 from django.core.exceptions import ImproperlyConfigured
+from django.utils import timezone
+from django.utils.functional import cached_property
 
 import cryptography.fernet
 
@@ -109,7 +110,15 @@ class EncryptedDateField(EncryptedMixin, django.db.models.DateField):
 
 
 class EncryptedDateTimeField(EncryptedMixin, django.db.models.DateTimeField):
-    pass
+    # credit to Oleg Pesok...
+    def to_python(self, value):
+        value = super(EncryptedDateTimeField, self).to_python(value)
+
+        if value is not None and settings.USE_TZ and timezone.is_naive(value):
+            default_timezone = timezone.get_default_timezone()
+            value = timezone.make_aware(value, default_timezone)
+
+        return value
 
 
 class EncryptedEmailField(EncryptedMixin, django.db.models.EmailField):

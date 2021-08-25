@@ -35,9 +35,6 @@ class TestModelTestCase(TestCase):
         self.assertEqual(inst.enc_date_field, test_date)
         self.assertEqual(inst.enc_date_now_field, test_date_today)
         self.assertEqual(inst.enc_date_now_add_field, test_date_today)
-        # be careful about sqlite testing, which doesn't support native dates
-        if timezone.is_naive(inst.enc_datetime_field):
-            inst.enc_datetime_field = timezone.make_aware(inst.enc_datetime_field, timezone.utc)
         self.assertEqual(inst.enc_datetime_field, test_datetime)
         self.assertEqual(inst.enc_boolean_field, True)
         self.assertEqual(inst.enc_integer_field, 123456789)

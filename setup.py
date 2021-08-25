@@ -26,12 +26,14 @@ setup(
         'cryptography.io native python encryption library.'
     ),
     long_description=open('README.rst').read(),
+    long_description_content_type='text/x-rst',
     url='http://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields/',
     download_url=f'https://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields/repository/archive.tar.gz?ref=v{version}',  # noqa
     author='Scott Sharkey',
     author_email='ssharkey@lanshark.com',
     maintainer="Scott Sharkey",
     maintainer_email="ssharkey@lanshark.com",
+    python_requires='>=2.6, <=3.10',
     install_requires=[
         'Django>=2.2',
         'cryptography>=3.4',
