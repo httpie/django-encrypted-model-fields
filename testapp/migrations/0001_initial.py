@@ -19,7 +19,6 @@ class Migration(migrations.Migration):
                 ('enc_date_now_add_field', encrypted_model_fields.fields.EncryptedDateField(auto_now_add=True, max_length=100, null=True)),
                 ('enc_datetime_field', encrypted_model_fields.fields.EncryptedDateTimeField(max_length=100, null=True)),
                 ('enc_boolean_field', encrypted_model_fields.fields.EncryptedBooleanField(default=True, max_length=100)),
-                ('enc_null_boolean_field', encrypted_model_fields.fields.EncryptedNullBooleanField(max_length=100)),
                 ('enc_integer_field', encrypted_model_fields.fields.EncryptedIntegerField(null=True)),
                 ('enc_positive_integer_field', encrypted_model_fields.fields.EncryptedPositiveIntegerField(null=True)),
                 ('enc_small_integer_field', encrypted_model_fields.fields.EncryptedSmallIntegerField(null=True)),

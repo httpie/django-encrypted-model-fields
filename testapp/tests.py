@@ -22,7 +22,6 @@ class TestModelTestCase(TestCase):
         inst.enc_date_field = test_date
         inst.enc_datetime_field = test_datetime
         inst.enc_boolean_field = True
-        inst.enc_null_boolean_field = True
         inst.enc_integer_field = 123456789
         inst.enc_positive_integer_field = 123456789
         inst.enc_small_integer_field = 123456789
@@ -41,7 +40,6 @@ class TestModelTestCase(TestCase):
             inst.enc_datetime_field = timezone.make_aware(inst.enc_datetime_field, timezone.utc)
         self.assertEqual(inst.enc_datetime_field, test_datetime)
         self.assertEqual(inst.enc_boolean_field, True)
-        self.assertEqual(inst.enc_null_boolean_field, True)
         self.assertEqual(inst.enc_integer_field, 123456789)
         self.assertEqual(inst.enc_positive_integer_field, 123456789)
         self.assertEqual(inst.enc_small_integer_field, 123456789)
@@ -55,7 +53,6 @@ class TestModelTestCase(TestCase):
         inst.enc_date_field = test_date
         inst.enc_datetime_field = test_datetime
         inst.enc_boolean_field = False
-        inst.enc_null_boolean_field = False
         inst.enc_integer_field = -123456789
         inst.enc_positive_integer_field = 0
         inst.enc_small_integer_field = -123456789
@@ -74,17 +71,14 @@ class TestModelTestCase(TestCase):
             inst.enc_datetime_field = timezone.make_aware(inst.enc_datetime_field, timezone.utc)
         self.assertEqual(inst.enc_datetime_field, test_datetime)
         self.assertEqual(inst.enc_boolean_field, False)
-        self.assertEqual(inst.enc_null_boolean_field, False)
         self.assertEqual(inst.enc_integer_field, -123456789)
         self.assertEqual(inst.enc_positive_integer_field, 0)
         self.assertEqual(inst.enc_small_integer_field, -123456789)
         self.assertEqual(inst.enc_positive_small_integer_field, 0)
         self.assertEqual(inst.enc_big_integer_field, -9223372036854775806)
 
-        inst.enc_null_boolean_field = None
         inst.save()
         inst = models.TestModel.objects.get()
-        self.assertEqual(inst.enc_null_boolean_field, None)
 
     def test_unicode_value(self):
         inst = models.TestModel()
@@ -106,7 +100,6 @@ class TestModelTestCase(TestCase):
         inst.enc_date_field = datetime.date(2011, 1, 1)
         inst.enc_datetime_field = datetime.datetime(2012, 2, 1, 1, tzinfo=timezone.utc)
         inst.enc_boolean_field = True
-        inst.enc_null_boolean_field = True
         inst.enc_integer_field = 123456789
         inst.enc_positive_integer_field = 123456789
         inst.enc_small_integer_field = 123456789
@@ -120,11 +113,9 @@ class TestModelTestCase(TestCase):
                 continue
             self.assertEqual(value[:7], 'gAAAAAB', '{} failed: {}'.format(key, value))
 
-        inst.enc_null_boolean_field = None
         inst.save()
 
         d = models.TestModel.objects.values()[0]
-        self.assertEqual(d['enc_null_boolean_field'], None)
 
     def test_get_internal_type(self):
         enc_char_field = models.TestModel._meta.fields[1]
@@ -132,19 +123,17 @@ class TestModelTestCase(TestCase):
         enc_date_field = models.TestModel._meta.fields[3]
         enc_date_now_field = models.TestModel._meta.fields[4]
         enc_boolean_field = models.TestModel._meta.fields[7]
-        enc_null_boolean_field = models.TestModel._meta.fields[8]
-        enc_integer_field = models.TestModel._meta.fields[9]
-        enc_positive_integer_field = models.TestModel._meta.fields[10]
-        enc_small_integer_field = models.TestModel._meta.fields[11]
-        enc_positive_small_integer_field = models.TestModel._meta.fields[12]
-        enc_big_integer_field = models.TestModel._meta.fields[13]
+        enc_integer_field = models.TestModel._meta.fields[8]
+        enc_positive_integer_field = models.TestModel._meta.fields[9]
+        enc_small_integer_field = models.TestModel._meta.fields[10]
+        enc_positive_small_integer_field = models.TestModel._meta.fields[11]
+        enc_big_integer_field = models.TestModel._meta.fields[12]
 
         self.assertEqual(enc_char_field.get_internal_type(), 'TextField')
         self.assertEqual(enc_text_field.get_internal_type(), 'TextField')
         self.assertEqual(enc_date_field.get_internal_type(), 'TextField')
         self.assertEqual(enc_date_now_field.get_internal_type(), 'TextField')
         self.assertEqual(enc_boolean_field.get_internal_type(), 'TextField')
-        self.assertEqual(enc_null_boolean_field.get_internal_type(), 'TextField')
 
         self.assertEqual(enc_integer_field.get_internal_type(), 'TextField')
         self.assertEqual(enc_positive_integer_field.get_internal_type(), 'TextField')
@@ -193,7 +182,6 @@ class TestModelTestCase(TestCase):
             inst.enc_date_field = test_date
             inst.enc_datetime_field = test_datetime
             inst.enc_boolean_field = True
-            inst.enc_null_boolean_field = True
             inst.enc_integer_field = 123456789
             inst.enc_positive_integer_field = 123456789
             inst.enc_small_integer_field = 123456789
@@ -218,7 +206,6 @@ class TestModelTestCase(TestCase):
                 inst.enc_datetime_field = timezone.make_aware(inst.enc_datetime_field, timezone.utc)
             self.assertEqual(inst.enc_datetime_field, test_datetime)
             self.assertEqual(inst.enc_boolean_field, True)
-            self.assertEqual(inst.enc_null_boolean_field, True)
             self.assertEqual(inst.enc_integer_field, 123456789)
             self.assertEqual(inst.enc_positive_integer_field, 123456789)
             self.assertEqual(inst.enc_small_integer_field, 123456789)
@@ -246,7 +233,6 @@ class TestModelTestCase(TestCase):
                 inst.enc_datetime_field = timezone.make_aware(inst.enc_datetime_field, timezone.utc)
             self.assertEqual(inst.enc_datetime_field, test_datetime)
             self.assertEqual(inst.enc_boolean_field, True)
-            self.assertEqual(inst.enc_null_boolean_field, True)
             self.assertEqual(inst.enc_integer_field, 123456789)
             self.assertEqual(inst.enc_positive_integer_field, 123456789)
             self.assertEqual(inst.enc_small_integer_field, 123456789)
@@ -260,9 +246,9 @@ class TestModelTestCase(TestCase):
 
             # test that loading the instance from the database results in usable data
             # (since it uses the older key that's still configured)
-            # Note we need to only load the enc_char_field because loading date field types results in
-            # conversion to python dates, which will be raise a ValidationError when the field can't be
-            # properly decoded
+            # Note we need to only load the enc_char_field because loading date field types
+            # results in conversion to python dates, which will be raise a ValidationError when
+            # the field can't be properly decoded
             inst = models.TestModel.objects.only('enc_char_field').get()
             self.assertNotEqual(inst.enc_char_field, 'This is a test string!')
             self.assertEqual(inst.enc_char_field[:5], 'gAAAA')

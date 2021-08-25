@@ -34,7 +34,7 @@ setup(
     maintainer_email="ssharkey@lanshark.com",
     install_requires=[
         'Django>=2.2',
-        'cryptography>=2.3',
+        'cryptography>=3.4',
     ],
     tests_require=['tox'],
     keywords=['encryption', 'django', 'fields', ],

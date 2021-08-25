@@ -1,5 +1,15 @@
 django-encrypted-model-field Changelog
 ---------------------------------------
+- 0.6.0 - Major Update
+  * Drop Python 2 Support
+  * Drop support for Django < 2.2
+  * Add support for Django 2.2, 3.0, 3.1, and 3.2
+  * Drop support for Python < 3.6
+  * Add Support for Python 3.6, 3.7, 3.8, and 3.9
+  * Move travis-ci testing to gitlab
+  * Remove Support for EncryptedNullBooleanField (deprecated by Django 4.0)
+  * Update Test App to Django 2.2 standard
+
 - 0.5.8 - Move to GITLAB repository
 
 - 0.5.7 - rearrange requirements and update dependencies
