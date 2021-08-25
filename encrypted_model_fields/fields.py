@@ -31,7 +31,7 @@ def get_crypter():
             # else turn the single key into a list of one
             keys = [parse_key(configured_keys), ]
     except Exception as e:
-        raise ImproperlyConfigured('FIELD_ENCRYPTION_KEY defined incorrectly: {}'.format(str(e)))
+        raise ImproperlyConfigured(f'FIELD_ENCRYPTION_KEY defined incorrectly: {str(e)}')
 
     if len(keys) == 0:
         raise ImproperlyConfigured('No keys defined in setting FIELD_ENCRYPTION_KEY')

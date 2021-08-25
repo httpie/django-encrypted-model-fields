@@ -111,7 +111,7 @@ class TestModelTestCase(TestCase):
         for key, value in d.items():
             if key == 'id':
                 continue
-            self.assertEqual(value[:7], 'gAAAAAB', '{} failed: {}'.format(key, value))
+            self.assertEqual(value[:7], 'gAAAAAB', f'{key} failed: {value}')
 
         inst.save()
 

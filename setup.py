@@ -27,7 +27,7 @@ setup(
     ),
     long_description=open('README.rst').read(),
     url='http://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields/',
-    download_url='https://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields/repository/archive.tar.gz?ref=v{}'.format(version),
+    download_url=f'https://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields/repository/archive.tar.gz?ref=v{version}',  # noqa
     author='Scott Sharkey',
     author_email='ssharkey@lanshark.com',
     maintainer="Scott Sharkey",
