@@ -90,8 +90,11 @@ Added Tox for testing with different versions of Django and Python.  To get star
 
 using ``pyenv`` add the requisite python interpreters::
     pyenv install 3.6.14
+
     pyenv install 3.7.11
+
     pyenv install 3.8.11
+
     pyenv install 3.9.6
 
 Add the requisite versions to the local version::
