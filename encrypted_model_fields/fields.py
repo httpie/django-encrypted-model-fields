@@ -1,3 +1,5 @@
+import itertools
+
 import django.db
 import django.db.models
 from django.conf import settings
@@ -74,7 +76,7 @@ class EncryptedMixin(object):
 
         return super(EncryptedMixin, self).to_python(value)
 
-    def from_db_value(self, value, expression, connection):
+    def from_db_value(self, value, *args, **kwargs):
         return self.to_python(value)
 
     def get_db_prep_save(self, value, connection):
@@ -152,7 +154,7 @@ class EncryptedNumberMixin(EncryptedMixin):
             range_validators.append(validators.MinValueValidator(min_value))
         if max_value is not None:
             range_validators.append(validators.MaxValueValidator(max_value))
-        return super(EncryptedNumberMixin, self).validators + range_validators
+        return list(itertools.chain(self.default_validators, self._validators, range_validators))
 
 
 class EncryptedIntegerField(EncryptedNumberMixin, django.db.models.IntegerField):

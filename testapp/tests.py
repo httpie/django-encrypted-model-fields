@@ -252,3 +252,36 @@ class TestModelTestCase(TestCase):
 
         # reset the CRYPTER since we screwed with the default configuration with this test
         encrypted_model_fields.fields.CRYPTER = encrypted_model_fields.fields.get_crypter()
+
+    @mock.patch('django.db.connection.ops.integer_field_range')
+    def test_integer_field_validators(self, integer_field_range):
+        def side_effect(arg):
+            # throw error as mysql does in this case
+            if arg == 'TextField':
+                raise KeyError(arg)
+            # benign return value
+            return (None, None)
+
+        integer_field_range.side_effect = side_effect
+
+        class TestModelForm(ModelForm):
+            class Meta:
+                model = models.TestModel
+                fields = ('enc_integer_field', )
+
+        f = TestModelForm(data={'enc_integer_field': 99})
+        self.assertTrue(f.is_valid())
+
+        inst = models.TestModel()
+        # Should be safe to call
+        super(
+            encrypted_model_fields.fields.EncryptedIntegerField,
+            inst._meta.get_field('enc_integer_field')
+        ).validators
+
+        # should fail due to error
+        with self.assertRaises(Exception):
+            super(
+                encrypted_model_fields.fields.EncryptedNumberMixin,
+                inst._meta.get_field('enc_integer_field')
+            ).validators

@@ -9,6 +9,8 @@ django-encrypted-model-field Changelog
   * Move travis-ci testing to gitlab
   * Remove Support for EncryptedNullBooleanField (deprecated by Django 4.0)
   * Update Test App to Django 2.2 standard
+  * Include 2 of Oleg Pesok's fixes: for Timezone-aware datetimes, and the
+    cached validator crash
 
 - 0.5.8 - Move to GITLAB repository
 
