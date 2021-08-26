@@ -37,14 +37,14 @@ Add "encrypted_model_fields" to your INSTALLED_APPS setting like this::
 
 ``django-encrypted-model-fields`` expects the encryption key to be specified
 using ``FIELD_ENCRYPTION_KEY`` in your project's ``settings.py`` file. For
-example, to load it from the local environment:
+example, to load it from the local environment::
 
     import os
 
     FIELD_ENCRYPTION_KEY = os.environ.get('FIELD_ENCRYPTION_KEY', '')
 
 To use an encrypted field in a Django model, use one of the fields from the
-``encrypted_model_fields`` module:
+``encrypted_model_fields`` module::
 
     from encrypted_model_fields.fields import EncryptedCharField
 
@@ -65,7 +65,7 @@ Generating an Encryption Key
 
 There is a Django management command ``generate_encryption_key`` provided
 with the ``encrypted_model_fields`` library. Use this command to generate a new
-encryption key to set as ``settings.FIELD_ENCRYPTION_KEY``.
+encryption key to set as ``settings.FIELD_ENCRYPTION_KEY``::
 
     ./manage.py generate_encryption_key
 
@@ -88,14 +88,14 @@ Development Environment
 Added Tox for testing with different versions of Django and Python.  To get started:
     pip install -r requirements/dev.txt
 
-using ``pyenv`` add the requisite python interpreters:
+using ``pyenv`` add the requisite python interpreters::
     pyenv install 3.6.14
     pyenv install 3.7.11
     pyenv install 3.8.11
     pyenv install 3.9.6
 
-Add the requisite versions to the local version:
+Add the requisite versions to the local version::
     pyenv local 3.6.14 3.7.11 3.8.11 3.9.6
 
-Run ``tox``
+Run ``tox``::
     tox
