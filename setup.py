@@ -33,7 +33,7 @@ setup(
     author_email='ssharkey@lanshark.com',
     maintainer="Scott Sharkey",
     maintainer_email="ssharkey@lanshark.com",
-    python_requires='>=2.6, <=3.10',
+    python_requires='>=2.6, <3.11',
     install_requires=[
         'Django>=2.2',
         'cryptography>=3.4',
