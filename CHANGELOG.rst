@@ -1,5 +1,7 @@
 django-encrypted-model-field Changelog
 ---------------------------------------
+- 0.6.1 - Add Support for Django 3.10
+
 - 0.6.0 - Major Update
   * Drop Python 2 Support
   * Drop support for Django < 2.2

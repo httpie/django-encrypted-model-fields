@@ -33,7 +33,7 @@ setup(
     author_email='ssharkey@lanshark.com',
     maintainer="Scott Sharkey",
     maintainer_email="ssharkey@lanshark.com",
-    python_requires='>=2.6, <3.11',
+    python_requires='>=3.6, <=3.11',
     install_requires=[
         'Django>=2.2',
         'cryptography>=3.4',
@@ -57,10 +57,12 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Framework :: Django',
         'Framework :: Django :: 2.2',
         'Framework :: Django :: 3.0',
         'Framework :: Django :: 3.1',
         'Framework :: Django :: 3.2',
+        'Framework :: Django :: 4.0',
     ],
 )
