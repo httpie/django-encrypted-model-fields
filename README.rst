@@ -89,16 +89,18 @@ Added Tox for testing with different versions of Django and Python.  To get star
     pip install -r requirements/dev.txt
 
 using ``pyenv`` add the requisite python interpreters::
-    pyenv install 3.6.14
+    pyenv install 3.6.15
 
-    pyenv install 3.7.11
+    pyenv install 3.7.12
 
-    pyenv install 3.8.11
+    pyenv install 3.8.12
 
-    pyenv install 3.9.6
+    pyenv install 3.9.10
+
+    pyenv install 3.10.2
 
 Add the requisite versions to the local version::
-    pyenv local 3.6.14 3.7.11 3.8.11 3.9.6
+    pyenv local 3.6.15 3.7.12 3.8.12 3.9.10 3.10.2
 
 Run ``tox``::
     tox

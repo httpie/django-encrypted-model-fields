@@ -39,6 +39,8 @@ matrix:
         env: TOX_ENV=py38-django31
       - python: 3.8
         env: TOX_ENV=py38-django32
+      - python: 3.8
+        env: TOX_ENV=py38-django40
       - python: 3.9
         env: TOX_ENV=py39-django22
       - python: 3.9
@@ -47,6 +49,18 @@ matrix:
         env: TOX_ENV=py39-django31
       - python: 3.9
         env: TOX_ENV=py39-django32
+      - python: 3.9
+        env: TOX_ENV=py39-django40
+      - python: 3.10
+        env: TOX_ENV=py310-django22
+      - python: 3.10
+        env: TOX_ENV=py310-django30
+      - python: 3.10
+        env: TOX_ENV=py310-django31
+      - python: 3.10
+        env: TOX_ENV=py310-django32
+      - python: 3.10
+        env: TOX_ENV=py310-django40
 
 script: tox -e $TOX_ENV
 
