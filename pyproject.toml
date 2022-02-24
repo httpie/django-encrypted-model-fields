@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "django-encrypted-model-fields"
+version = "0.6.2"
+description = "A set of fields that wrap standard Django fields with encryption provided by the python cryptography library."
+authors = ["Scott Sharkey <ssharkey@lanshark.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+cryptography = ">=3.4"
+Django = ">=2.2"
+
+[tool.poetry.dev-dependencies]
+django-coverage = "^1.2.4"
+mock = "^4.0.3"
+tox = "^3.24.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

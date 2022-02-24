@@ -25,8 +25,8 @@ setup(
         'A set of django fields that internally are encrypted using the '
         'cryptography.io native python encryption library.'
     ),
-    long_description=open('README.rst').read(),
-    long_description_content_type='text/x-rst',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     url='http://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields/',
     download_url=f'https://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields/repository/archive.tar.gz?ref=v{version}',  # noqa
     author='Scott Sharkey',

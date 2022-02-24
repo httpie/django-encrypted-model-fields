@@ -1,8 +1,0 @@
--r base.txt
-
-wheel
-
-# for testing...
-django_coverage
-mock
-tox
