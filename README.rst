@@ -23,6 +23,28 @@ your key file into your git repository for deployment, or implement manual
 post-deployment processing to write the key stored in an environment variable
 into a file that keyczar can read.
 
+Generating an Encryption Key
+----------------------------
+
+There is a Django management command ``generate_encryption_key`` provided
+with the ``encrypted_model_fields`` library. Use this command to generate a new
+encryption key to set as ``settings.FIELD_ENCRYPTION_KEY``::
+
+    ./manage.py generate_encryption_key
+
+Running this command will print an encryption key to the terminal, which can
+be configured in your environment or settings file.
+
+*NOTE: This command will ONLY work in a CLEAN, NEW django project that does NOT
+import encrypted_model_fields in any of it's apps.*  IF you are already importing
+encrypted_model_fields, try running this in a python shell instead::
+
+   import os
+   import base64
+
+   new_key = base64.urlsafe_b64encode(os.urandom(32))
+   print(new_key)
+
 Getting Started
 ---------------
 
@@ -59,28 +81,6 @@ when ``EncryptedCharField(max_length=3)`` is specified.
 
 Due to the nature of the encrypted data, filtering by values contained in
 encrypted fields won't work properly. Sorting is also not supported.
-
-Generating an Encryption Key
-----------------------------
-
-There is a Django management command ``generate_encryption_key`` provided
-with the ``encrypted_model_fields`` library. Use this command to generate a new
-encryption key to set as ``settings.FIELD_ENCRYPTION_KEY``::
-
-    ./manage.py generate_encryption_key
-
-Running this command will print an encryption key to the terminal, which can
-be configured in your environment or settings file.
-
-NOTE: This command will ONLY work in a CLEAN, NEW django project that does NOT
-import encrypted_model_fields in any of it's apps.  IF you are already importing
-encrypted_model_fields, try running this in a python shell instead::
-
-   import os
-   import base64
-
-   new_key = base64.urlsafe_b64encode(os.urandom(32))
-   print(new_key)
 
 Development Environment
 -----------------------

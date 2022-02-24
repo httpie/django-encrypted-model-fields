@@ -1,6 +1,9 @@
 django-encrypted-model-field Changelog
 ---------------------------------------
-- 0.6.1 - Add Support for Django 3.10
+- 0.6.2 - Bump support to any python < 4
+  * Make Generating an Encryption Key more prominent
+
+- 0.6.1 - Add Support for Python up to 3.11
 
 - 0.6.0 - Major Update
   * Drop Python 2 Support
