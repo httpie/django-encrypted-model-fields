@@ -1,8 +1,6 @@
 # Django Encrypted Model Fields
 
-.. image::
-<https://travis-ci.org/lanshark/django-encrypted-model-fields.png>
-:target: <https://travis-ci.org/lanshark/django-encrypted-model-fields>
+[![image](https://travis-ci.org/lanshark/django-encrypted-model-fields.png)](https://travis-ci.org/lanshark/django-encrypted-model-fields)
 
 ## About
 
@@ -17,7 +15,7 @@ library. These fields are much more compatible with a 12-factor design
 since they take their encryption key from the settings file instead of a
 file on disk used by `keyczar`.
 
-While keyczar is an excellent tool to use for encryption, it\'s not
+While keyczar is an excellent tool to use for encryption, it's not
 compatible with Python 3, and it requires, for hosts like Heroku, that
 you either check your key file into your git repository for deployment,
 or implement manual post-deployment processing to write the key stored
@@ -27,7 +25,7 @@ in an environment variable into a file that keyczar can read.
 
 There is a Django management command `generate_encryption_key` provided
 with the `encrypted_model_fields` library. Use this command to generate
-a new encryption key to set as `settings.FIELD_ENCRYPTION_KEY`::
+a new encryption key to set as `settings.FIELD_ENCRYPTION_KEY`:
 
     ./manage.py generate_encryption_key
 
@@ -35,20 +33,21 @@ Running this command will print an encryption key to the terminal, which
 can be configured in your environment or settings file.
 
 *NOTE: This command will ONLY work in a CLEAN, NEW django project that
-does NOT import encrypted_model_fields in any of it\'s apps.* IF you are
+does NOT import encrypted_model_fields in any of it's apps.* IF you are
 already importing encrypted_model_fields, try running this in a python
-shell instead::
+shell instead:
 
-import os import base64
+    import os
+    import base64
 
-new_key = base64.urlsafe_b64encode(os.urandom(32)) print(new_key)
+    new_key = base64.urlsafe_b64encode(os.urandom(32))
+    print(new_key)
 
 ## Getting Started
 
-    $ pip install django-encrypted-model-fields
+> $ pip install django-encrypted-model-fields
 
-Add \"encrypted_model_fields\" to your INSTALLED_APPS setting like
-this::
+Add "encrypted_model_fields" to your INSTALLED_APPS setting like this:
 
     INSTALLED_APPS = (
         ...
@@ -56,15 +55,15 @@ this::
     )
 
 `django-encrypted-model-fields` expects the encryption key to be
-specified using `FIELD_ENCRYPTION_KEY` in your project\'s `settings.py`
-file. For example, to load it from the local environment::
+specified using `FIELD_ENCRYPTION_KEY` in your project's `settings.py`
+file. For example, to load it from the local environment:
 
     import os
 
     FIELD_ENCRYPTION_KEY = os.environ.get('FIELD_ENCRYPTION_KEY', '')
 
 To use an encrypted field in a Django model, use one of the fields from
-the `encrypted_model_fields` module::
+the `encrypted_model_fields` module:
 
     from encrypted_model_fields.fields import EncryptedCharField
 
@@ -78,25 +77,26 @@ database field to hold the encrypted form of the content. For example, a
 of 100 characters when `EncryptedCharField(max_length=3)` is specified.
 
 Due to the nature of the encrypted data, filtering by values contained
-in encrypted fields won\'t work properly. Sorting is also not supported.
+in encrypted fields won't work properly. Sorting is also not supported.
 
 ## Development Environment
 
-Added Tox for testing with different versions of Django and Python. To
-get started: pip install -r requirements/dev.txt
+Added Tox for testing with different versions of Django and Python. To get started:
+pip install -r requirements/dev.txt
 
-using `pyenv` add the requisite python interpreters:: pyenv install
-3.6.15
+using `pyenv` add the requisite python interpreters::
+pyenv install 3.6.15
 
-    pyenv install 3.7.12
+pyenv install 3.7.12
 
-    pyenv install 3.8.12
+pyenv install 3.8.12
 
-    pyenv install 3.9.10
+pyenv install 3.9.10
 
-    pyenv install 3.10.2
+pyenv install 3.10.2
 
-Add the requisite versions to the local version:: pyenv local 3.6.15
-3.7.12 3.8.12 3.9.10 3.10.2
+Add the requisite versions to the local version::
+pyenv local 3.6.15 3.7.12 3.8.12 3.9.10 3.10.2
 
-Run `tox`:: tox
+Run `tox`::
+tox
