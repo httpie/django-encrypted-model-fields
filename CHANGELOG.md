@@ -1,6 +1,8 @@
 # django-encrypted-model-field Changelog
 
--   0.6.3 - Converted to poetry, setup.cfg for build system
+-   0.6.5 - RE-Correct links to repository and homepage
+-   0.6.4 - Correct links to repository and homepage
+-   0.6.3 - Converted to poetry for build system
 -   0.6.2 - Bump support to any python \< 4
     -   Make Generating an Encryption Key more prominent
 -   0.6.1 - Add Support for Python up to 3.11

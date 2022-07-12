@@ -1,9 +1,43 @@
 [tool.poetry]
 name = "django-encrypted-model-fields"
-version = "0.6.2"
+version = "0.6.5"
 description = "A set of fields that wrap standard Django fields with encryption provided by the python cryptography library."
 authors = ["Scott Sharkey <ssharkey@lanshark.com>"]
 license = "MIT"
+packages = [ { include = "encrypted_model_fields" } ]
+readme = "README.md"
+repository = "https://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields"
+homepage = "https://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields"
+keywords = [ "encryption", "django", "fields" ]
+classifiers = [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Environment :: Web Environment",
+        "Operating System :: OS Independent",
+        "Operating System :: POSIX",
+        "Operating System :: Unix",
+        "Topic :: Internet :: WWW/HTTP",
+        "Topic :: Security",
+        "Topic :: System :: Systems Administration :: Authentication/Directory",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Framework :: Django",
+        "Framework :: Django :: 2.2",
+        "Framework :: Django :: 3.0",
+        "Framework :: Django :: 3.1",
+        "Framework :: Django :: 3.2",
+        "Framework :: Django :: 4.0",
+]
+include = [
+    "LICENSE",
+    "CHANGELOG.md",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
@@ -14,6 +48,8 @@ Django = ">=2.2"
 django-coverage = "^1.2.4"
 mock = "^4.0.3"
 tox = "^3.24.5"
+flake8 = "^4.0.1"
+pycodestyle = "^2.8.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
