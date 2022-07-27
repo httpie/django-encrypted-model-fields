@@ -1,6 +1,14 @@
-# Django Encrypted Model Fields
 
-[![image](https://travis-ci.org/lanshark/django-encrypted-model-fields.png)](https://travis-ci.org/lanshark/django-encrypted-model-fields)
+> **Note**
+> This is a fork of https://gitlab.com/lansharkconsulting/django/django-encrypted-model-fields.
+> 
+> It introduces some small use-case specific tweaks.
+
+ 
+---
+
+
+# Django Encrypted Model Fields
 
 ## About
 

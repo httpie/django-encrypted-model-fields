@@ -1,4 +1,5 @@
 import itertools
+from typing import Callable
 
 import django.db
 import django.db.models
@@ -61,9 +62,13 @@ def calc_encrypted_length(n):
     return len(encrypt_str('a' * n))
 
 
-class EncryptedMixin(object):
+EXCLUDED_VALUES = {None, ''}
+
+
+class EncryptedMixin:
+
     def to_python(self, value):
-        if value is None:
+        if value in EXCLUDED_VALUES:
             return value
 
         if isinstance(value, (bytes, str)):
@@ -82,7 +87,7 @@ class EncryptedMixin(object):
     def get_db_prep_save(self, value, connection):
         value = super(EncryptedMixin, self).get_db_prep_save(value, connection)
 
-        if value is None:
+        if value in EXCLUDED_VALUES:
             return value
         # decode the encrypted value to a unicode string, else this breaks in pgsql
         return (encrypt_str(str(value))).decode('utf-8')
