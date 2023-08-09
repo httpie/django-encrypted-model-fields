@@ -86,7 +86,8 @@ class EncryptedMixin:
 
     def get_db_prep_save(self, value, connection):
         value = super(EncryptedMixin, self).get_db_prep_save(value, connection)
-
+        if hasattr(value, 'as_sql'):
+            return value
         if value in EXCLUDED_VALUES:
             return value
         # decode the encrypted value to a unicode string, else this breaks in pgsql
